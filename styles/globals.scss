@@ -1,12 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Poppins:wght@400;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  line-height: 1.5;
+  tab-size: 4;
+}
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: rgb(18 24 27);
   color: rgb(243 244 246);
+  font-size: 16px;
+}
+
+body {
+  line-height: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 a {
@@ -14,6 +37,50 @@ a {
   text-decoration: none;
 }
 
-* {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+[role='button'] {
+  cursor: pointer;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+@import './sizing.scss';
+
+.fill-white {
+  fill: #fff;
 }
