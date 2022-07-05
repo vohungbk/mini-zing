@@ -344,13 +344,6 @@
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.4.2.tgz"
   "version" "4.4.2"
 
-"axios@^0.24.0":
-  "integrity" "sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA=="
-  "resolved" "https://registry.npmjs.org/axios/-/axios-0.24.0.tgz"
-  "version" "0.24.0"
-  dependencies:
-    "follow-redirects" "^1.14.4"
-
 "axios@^0.27.2":
   "integrity" "sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ=="
   "resolved" "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz"
@@ -949,7 +942,7 @@
   "resolved" "https://registry.npmjs.org/flatted/-/flatted-3.2.5.tgz"
   "version" "3.2.5"
 
-"follow-redirects@^1.14.4", "follow-redirects@^1.14.9":
+"follow-redirects@^1.14.9":
   "integrity" "sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.1.tgz"
   "version" "1.15.1"
@@ -2220,17 +2213,3 @@
   "integrity" "sha512-o96x3OPo8GjWeSLF+wOAbrPfhFOGY0W00GNaxCDv+9hkcDJEnev1yh8S7pgHF0ik6zc8sQLuL8hjHjJULZp8bw=="
   "resolved" "https://registry.npmjs.org/yaml/-/yaml-2.1.1.tgz"
   "version" "2.1.1"
-
-"zingmp3-api-full@^1.0.14":
-  "integrity" "sha512-j7IjI6Igi8v0YwC0AMIiU5tatkCbiGXC5lcGlF3LQxWFCOwDSDEmLPBIfK/TcJU3XUgODEJykgeaer2DFt4M8A=="
-  "resolved" "https://registry.npmjs.org/zingmp3-api-full/-/zingmp3-api-full-1.0.14.tgz"
-  "version" "1.0.14"
-  dependencies:
-    "axios" "^0.24.0"
-
-"zingmp3-api-next@^1.0.3":
-  "integrity" "sha512-R6FMRQ5sOZPJHhJoiL8gyqFmvrKQ8TrgfAFokNa3yKh2HrAHgXAv/ueXCRm5uQVwE+GXJ2fEen4uKDc8myKh9w=="
-  "resolved" "https://registry.npmjs.org/zingmp3-api-next/-/zingmp3-api-next-1.0.3.tgz"
-  "version" "1.0.3"
-  dependencies:
-    "axios" "^0.27.2"
