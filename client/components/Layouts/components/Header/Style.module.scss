@@ -1,0 +1,85 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+  top: 0px;
+  width: 100%;
+  z-index: 1000;
+  position: fixed;
+  height: 4rem;
+  @media (min-width: 640px) {
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 4rem !important;
+  }
+  &.active {
+    height: 122px;
+  }
+
+  border-bottom-width: 1px;
+  border-color: rgb(31 41 55);
+  padding-left: 5vw;
+  padding-right: 5vw;
+  .leftSide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & > .link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      > span {
+        width: 2rem !important;
+        height: 2rem !important;
+        position: relative !important;
+      }
+      & > .title {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+      }
+    }
+    & > .btnSearch {
+      display: block;
+      @media (min-width: 640px) {
+        display: none;
+      }
+      & > svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+  }
+  .rightSide {
+    position: relative;
+    @media (min-width: 640px) {
+      display: flex !important;
+    }
+    &.hidden {
+      display: none;
+    }
+    & > input {
+      background-color: rgb(18 24 27);
+      border-width: 1px;
+      border-color: rgb(75 85 99);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      border-radius: 9999px;
+      @media (min-width: 640px) {
+        width: 15rem;
+      }
+    }
+    & > button {
+      position: absolute;
+      right: 0.5rem;
+      top: 54%;
+      transform: translate(0, -50%) rotate(0) skew(0) skewY(0) scaleX(1)
+        scaleY(1);
+      & > svg {
+        fill: #9ca3af;
+      }
+    }
+  }
+}
