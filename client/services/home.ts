@@ -1,8 +1,33 @@
-import { zing } from 'zingmp3-api-next'
+import axios from 'shared/axios'
+import { SEED_ARTISTS } from 'shared/constants'
 
+type Tracks = {
+  name: string
+  id: string
+  album: { images: { url: string }[] }
+  artists: { name: string }[]
+}
+
+interface Recommendations {
+  tracks: Tracks[]
+}
 
 export const getHomeContent = async () => {
-  const data = await zing.get_home()
-
-  return data
+  try {
+    const [recommendations] = await Promise.all([
+      axios
+        .get<Recommendations>('/getRecommendations', {
+          params: {
+            seed_artists: SEED_ARTISTS,
+          },
+        })
+        .then((res) => res.data.tracks),
+    ])
+    console.log(recommendations)
+    return {
+      recommendations,
+    }
+  } catch (err) {
+    console.log(err)
+  }
 }

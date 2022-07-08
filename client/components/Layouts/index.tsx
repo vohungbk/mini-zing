@@ -11,7 +11,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
   return (
     <div className={style.layout}>
       <Header />
-      <div>{children}</div>
+      <div className={style.container}>{children}</div>
     </div>
   )
 }
