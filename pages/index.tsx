@@ -15,8 +15,6 @@ const Home: NextPage = () => {
     revalidateIfStale: false,
   })
 
-  console.log(data)
-
   if (error) return <Error />
 
   if (!data?.recommendations.length) {

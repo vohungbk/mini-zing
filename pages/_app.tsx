@@ -4,6 +4,7 @@ import Layout from '@Components/Layouts'
 import Head from 'next/head'
 import Http from '@Components/Http'
 import { Provider as Auth } from '@Components/Auth'
+import { PlayerContextProvider } from 'context/PlayerContext'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,9 +16,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="/icon.png" type="image/x-icon" />
       </Head>
       <Auth>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <PlayerContextProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </PlayerContextProvider>
       </Auth>
     </Http>
   )

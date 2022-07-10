@@ -23,11 +23,8 @@ export const getHomeContent = async () => {
         })
         .then((res) => res.data.tracks),
     ])
-    console.log(recommendations)
     return {
       recommendations,
     }
-  } catch (err) {
-    console.log(err)
-  }
+  } catch (err) {}
 }

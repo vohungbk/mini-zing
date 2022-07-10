@@ -84,3 +84,33 @@ select {
 .fill-white {
   fill: #fff;
 }
+
+.text-gray-400 {
+  color: rgb(156 163 175);
+}
+
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.text-red-500 {
+  color: rgb(239 68 68);
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}

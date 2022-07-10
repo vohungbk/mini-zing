@@ -5,7 +5,6 @@ import {
   useEffect,
   useState,
 } from 'react'
-import cookie from 'js-cookie'
 import axios from 'axios'
 import { useHttpContext } from '@Components/Http'
 
@@ -34,13 +33,8 @@ export const Provider: FunctionComponent<ProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User>()
 
   useEffect(() => {
-    if (!cookie.get('accessToken')) {
+    if (!sessionStorage.getItem('accessToken')) {
       getUserAccount()
-    }
-    return () => {
-      window.alert('123')
-
-      cookie.remove('accessToken')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -66,7 +60,7 @@ export const Provider: FunctionComponent<ProviderProps> = ({ children }) => {
     if (user) {
       setTimeout(() => {
         refresh()
-        cookie.remove('accessToken')
+        sessionStorage.removeItem('accessToken')
       }, user?.expires_in * 1000)
     }
   }, [user])
@@ -87,7 +81,7 @@ export const Provider: FunctionComponent<ProviderProps> = ({ children }) => {
   }
 
   const authenticate = (data: User) => {
-    cookie.set('accessToken', data.access_token, { expires: data.expires_in })
+    sessionStorage.setItem('accessToken', data.access_token)
   }
 
   const value: AuthContextType = {

@@ -1,4 +1,4 @@
-import { FC, createContext, useState, ReactNode } from 'react'
+import { FC, createContext, useState, ReactNode, useEffect } from 'react'
 
 export const PlayerContext = createContext<{
   playerId: string
@@ -15,9 +15,12 @@ export const PlayerContext = createContext<{
 export const PlayerContextProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [playerId, setPlayerId] = useState(
-    localStorage.getItem('minizing-playing') || ''
-  )
+  const [playerId, setPlayerId] = useState('')
+  useEffect(() => {
+    if (localStorage.getItem('minizing-playing')) {
+      setPlayerId(localStorage?.getItem('minizing-playing') || '')
+    }
+  }, [])
   const [isPlayerIdChanged, setIsPlayerIdChanged] = useState(false)
 
   return (

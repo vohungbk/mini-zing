@@ -1,0 +1,99 @@
+.player {
+  position: sticky;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  background-color: rgb(18 24 27);
+  border-color: rgb(31 41 55);
+  border-top-width: 2px;
+  height: 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .trackInfo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1 1 0%;
+    .wrapperInfo {
+      display: none;
+      @media (min-width: 768px) {
+        display: block;
+      }
+    }
+  }
+  .action {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    flex: 1 1 0%;
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.25rem;
+      .btnRepeat {
+        width: 1.25rem;
+        height: 1.25rem;
+        fill: #fff;
+        &.isLoop {
+          fill: #0ea5e9;
+        }
+      }
+      .btnPlay {
+        border-width: 1px;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+
+        &.isError {
+          border-color: rgb(239 68 68);
+        }
+      }
+    }
+    .slider {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      @media (min-width: 768px) {
+        display: flex;
+      }
+      .time {
+        flex-shrink: 0;
+      }
+      & > .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1rem;
+        flex-grow: 1;
+        cursor: pointer;
+        max-width: 400px;
+      }
+    }
+  }
+  .volume {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1 1 0%;
+    .sliderWrapper {
+      display: none;
+      @media (min-width: 768px) {
+        display: block;
+      }
+    }
+  }
+}
