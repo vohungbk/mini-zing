@@ -1,4 +1,6 @@
+import classnames from 'classnames'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FC } from 'react'
 import { FaPlay } from 'react-icons/fa'
 
@@ -12,10 +14,11 @@ interface DataGridProps {
     description?: string
   }[]
   type: 'link' | 'button'
-  handler: (id: string) => void
+  href?: string
+  handler?: (id: string) => void
 }
 
-const DataGrid: FC<DataGridProps> = ({ data, handler }) => {
+const DataGrid: FC<DataGridProps> = ({ data, type, href, handler }) => {
   return (
     <div className={style.grid}>
       {data?.map((item) => {
@@ -34,16 +37,29 @@ const DataGrid: FC<DataGridProps> = ({ data, handler }) => {
                 <FaPlay className="fill-white w-5 h-5" />
               </div>
             </div>
-            <p className={style.title}>{item.title}</p>
+            <p className={classnames([style.title], 'line-clamp-2')}>
+              {item.title}
+            </p>
             {!!item.description && (
-              <p className={style.description}>{item.description}</p>
+              <p className={classnames([style.description, 'line-clamp-2'])}>
+                {item.description}
+              </p>
             )}
           </>
         )
 
+        if (type === 'link')
+          return (
+            <div key={item.id}>
+              <Link href={`${href}/${item.id}`}>
+                <a className={style.link}>{children}</a>
+              </Link>
+            </div>
+          )
+
         return (
           <div key={item.id}>
-            <div onClick={() => handler(item.id)} className={style.item}>
+            <div onClick={() => handler?.(item.id)} className={style.item}>
               {children}
             </div>
           </div>

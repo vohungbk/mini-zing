@@ -42,6 +42,50 @@ const Home: NextPage = () => {
               : '',
           }))}
       />
+
+      <h1 className="mt-5 mb-3 text-2xl">New Releases</h1>
+      <DataGrid
+        type="link"
+        href="/album"
+        data={data.newReleases.albums.items
+          .filter((album) => album.name)
+          .map((album) => ({
+            id: album.id,
+            image: album.images?.[0]?.url,
+            title: album.name,
+            description: album?.artists
+              ?.map((artist) => artist?.name)
+              ?.join(', '),
+          }))}
+      />
+
+      <h1 className="mt-10 mb-3 text-2xl">Top Playlists</h1>
+      <DataGrid
+        type="link"
+        href="/playlist"
+        data={data.topPlaylists
+          .filter((playlist) => playlist.name)
+          .map((playlist) => ({
+            id: playlist.id,
+            image: playlist.images?.[0]?.url,
+            title: playlist.name,
+            description: playlist?.owner?.display_name,
+          }))}
+      />
+
+      <h1 className="mt-10 mb-3 text-2xl">Featured Playlists</h1>
+      <DataGrid
+        type="link"
+        href="/playlist"
+        data={data.featuredPlaylists.playlists.items
+          .filter((playlist) => playlist.name)
+          .map((playlist) => ({
+            id: playlist.id,
+            image: playlist.images?.[0]?.url,
+            title: playlist.name,
+            description: playlist?.owner?.display_name,
+          }))}
+      />
     </div>
   )
 }
