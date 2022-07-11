@@ -86,6 +86,17 @@ const Home: NextPage = () => {
             description: playlist?.owner?.display_name,
           }))}
       />
+
+      <h1 className="mt-10 mb-3 text-2xl">Categories</h1>
+      <DataGrid
+        type="link"
+        href="/category"
+        data={data.categories.categories.items.map((category) => ({
+          id: category.id,
+          image: category?.icons?.[0]?.url,
+          title: category.name,
+        }))}
+      />
     </div>
   )
 }

@@ -17,7 +17,7 @@ const Header: FC = () => {
   return (
     <div className={classnames([style.header, { [style.active]: isActive }])}>
       <div className={style.leftSide}>
-        <Link href={'#'}>
+        <Link href={'/'}>
           <a className={style.link}>
             <Image
               className="w-8 h-8"
