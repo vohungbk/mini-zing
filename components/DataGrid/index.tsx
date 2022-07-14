@@ -27,7 +27,7 @@ const DataGrid: FC<DataGridProps> = ({ data, type, href, handler }) => {
             <div className={style.content}>
               <Image
                 className={style.image}
-                src={item.image}
+                src={item.image || '/image-default.png'}
                 alt=""
                 objectFit="cover"
                 layout="fill"

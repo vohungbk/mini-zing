@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import classnames from 'classnames'
 import type { NextPage } from 'next'
 import { getHomeContent } from 'services/home'
@@ -6,20 +6,27 @@ import useSWR from 'swr'
 import Error from '@Components/Error'
 import DataGrid from '@Components/DataGrid'
 import { PlayerContext } from 'context/PlayerContext'
+import Loading from '@Components/Loading'
 
 const Home: NextPage = () => {
   const { setPlayerId, setIsPlayerIdChanged } = useContext(PlayerContext)
 
-  const { data, error } = useSWR('home', () => getHomeContent(), {
-    revalidateOnFocus: false,
-    revalidateIfStale: false,
-  })
+  useEffect(() => {
+    console.log(sessionStorage.getItem('accessToken'))
+  }, [])
+
+  const { data, error } = useSWR(
+    () => (sessionStorage.getItem('accessToken') ? 'home' : null),
+    () => getHomeContent(),
+    {
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+    }
+  )
 
   if (error) return <Error />
 
-  if (!data?.recommendations.length) {
-    return null
-  }
+  if (!data) return <Loading />
 
   return (
     <div className={classnames('mx-5vw', 'pb-6')}>

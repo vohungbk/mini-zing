@@ -1,0 +1,86 @@
+.loading {
+  width: 6rem;
+  height: 6rem;
+  margin: 80px auto;
+  position: relative;
+  div {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      border: 4px solid #00aefd;
+      border-radius: 5rem;
+      animation: loading 1s infinite;
+    }
+  }
+  .item1 {
+    transform: rotate(calc(1 * 45deg));
+    &::before {
+      filter: hue-rotate(calc(1 * 45deg));
+      animation-delay: calc(1 * 0.125s);
+    }
+  }
+  .item2 {
+    transform: rotate(calc(2 * 45deg));
+    &::before {
+      filter: hue-rotate(calc(2 * 45deg));
+      animation-delay: calc(2 * 0.125s);
+    }
+  }
+  .item3 {
+    transform: rotate(calc(3 * 45deg));
+    &::before {
+      filter: hue-rotate(calc(3 * 45deg));
+      animation-delay: calc(3 * 0.125s);
+    }
+  }
+  .item4 {
+    transform: rotate(calc(4 * 45deg));
+    &::before {
+      filter: hue-rotate(calc(4 * 45deg));
+      animation-delay: calc(4 * 0.125s);
+    }
+  }
+  .item5 {
+    transform: rotate(calc(5 * 45deg));
+    &::before {
+      filter: hue-rotate(calc(5 * 45deg));
+      animation-delay: calc(5 * 0.125s);
+    }
+  }
+  .item6 {
+    transform: rotate(calc(6 * 45deg));
+    &::before {
+      filter: hue-rotate(calc(6 * 45deg));
+      animation-delay: calc(6 * 0.125s);
+    }
+  }
+  .item7 {
+    transform: rotate(calc(7 * 45deg));
+    &::before {
+      filter: hue-rotate(calc(7 * 45deg));
+      animation-delay: calc(7 * 0.125s);
+    }
+  }
+  .item8 {
+    transform: rotate(calc(8 * 45deg));
+    &::before {
+      filter: hue-rotate(calc(8 * 45deg));
+      animation-delay: calc(8 * 0.125s);
+    }
+  }
+}
+
+@keyframes loading {
+  to {
+    transform: scale(0);
+  }
+}

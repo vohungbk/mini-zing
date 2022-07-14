@@ -68,7 +68,7 @@ export const getHomeContent = async () => {
         })
         .then((res) => res.data),
       axios
-        .get<Categories>('/getCategories', { params: { country: 'VN' } })
+        .get<Categories>('/getCategories', { params: { country: 'US' } })
         .then((res) => res.data),
     ])
 

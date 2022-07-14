@@ -1,4 +1,5 @@
 import Error from '@Components/Error'
+import Loading from '@Components/Loading'
 import { PlayerContext } from 'context/PlayerContext'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -18,11 +19,12 @@ const Playlist = () => {
     getPlaylistInfo(id as string)
   )
   if (error) return <Error />
+  if (!data) return <Loading />
   return (
     <div className={style.playlist}>
       <div className={style.owner}>
         <Image
-          src={data?.images?.[0]?.url || ''}
+          src={data?.images?.[0]?.url || '/image-default.png'}
           width={300}
           height={300}
           objectFit="cover"

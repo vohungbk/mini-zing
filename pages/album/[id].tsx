@@ -9,6 +9,7 @@ import useSWR from 'swr'
 
 import style from './Style.module.scss'
 import { formatDuration } from 'shared/utils'
+import Loading from '@Components/Loading'
 
 const Album: FC = () => {
   const { setPlayerId, setIsPlayerIdChanged } = useContext(PlayerContext)
@@ -21,6 +22,8 @@ const Album: FC = () => {
   )
 
   if (error) return <Error />
+
+  if (!data) return <Loading />
 
   return (
     <div className={style.album}>
