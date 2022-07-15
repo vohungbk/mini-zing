@@ -3,7 +3,7 @@ export const SEED_ARTISTS = [
   '1LEtM3AleYg1xabW6CRkpi',
   '06HL4z0CvFAxyc27GXpf02',
   '1uNFoZAHBGtllmzznpCI3s',
-  '5FWPIKz9czXWaiNtw45KQs',
+  '3FwYnbtGNt8hJfjNuOfpeG',
 ].join(',')
 
 export const TOP_PLAYLISTS = [
@@ -17,4 +17,14 @@ export const TOP_PLAYLISTS = [
   '37i9dQZF1DX7Jl5KP2eZaS',
   '37i9dQZF1DX18jTM2l2fJY',
   '4BDcwKv9RSKKJ1bCVgfhNn',
+]
+
+export const SUGGESTED_ARTISTS = [
+  '3FwYnbtGNt8hJfjNuOfpeG',
+  '3XOuN4VDN4EL0GjKov5mWL',
+  '57g2v7gJZepcwsuwssIfZs',
+  '5dfZ5uSmzR7VQK0udbAVpf',
+  '06HL4z0CvFAxyc27GXpf02',
+  '1L1VfizWn4DkFt602yD80U',
+  '4e5LAUvM35jleGg8gElTsP',
 ]

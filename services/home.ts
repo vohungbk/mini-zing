@@ -1,5 +1,9 @@
 import axios from 'shared/axios'
-import { SEED_ARTISTS, TOP_PLAYLISTS } from 'shared/constants'
+import {
+  SEED_ARTISTS,
+  SUGGESTED_ARTISTS,
+  TOP_PLAYLISTS,
+} from 'shared/constants'
 
 type Tracks = {
   name: string
@@ -28,6 +32,15 @@ interface Categories {
   }
 }
 
+interface Artists {
+  artists: {
+    id: string
+    name: string
+    images: { url: string }[]
+    type: string
+  }[]
+}
+
 export const getHomeContent = async () => {
   try {
     const [
@@ -36,6 +49,7 @@ export const getHomeContent = async () => {
       topPlaylists,
       featuredPlaylists,
       categories,
+      artists,
     ] = await Promise.all([
       axios
         .get<Recommendations>('/getRecommendations', {
@@ -70,6 +84,9 @@ export const getHomeContent = async () => {
       axios
         .get<Categories>('/getCategories', { params: { country: 'US' } })
         .then((res) => res.data),
+      axios
+        .get<Artists>('/getArtists', { params: { ids: SUGGESTED_ARTISTS } })
+        .then((res) => res.data),
     ])
 
     return {
@@ -78,6 +95,7 @@ export const getHomeContent = async () => {
       topPlaylists,
       featuredPlaylists,
       categories,
+      artists,
     }
   } catch (err) {}
 }

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import classnames from 'classnames'
 import type { NextPage } from 'next'
 import { getHomeContent } from 'services/home'
@@ -10,10 +10,6 @@ import Loading from '@Components/Loading'
 
 const Home: NextPage = () => {
   const { setPlayerId, setIsPlayerIdChanged } = useContext(PlayerContext)
-
-  useEffect(() => {
-    console.log(sessionStorage.getItem('accessToken'))
-  }, [])
 
   const { data, error } = useSWR(
     () => (sessionStorage.getItem('accessToken') ? 'home' : null),
@@ -91,6 +87,20 @@ const Home: NextPage = () => {
             image: playlist.images?.[0]?.url,
             title: playlist.name,
             description: playlist?.owner?.display_name,
+          }))}
+      />
+
+      <h1 className="mt-10 mb-3 text-2xl">Suggested Artists</h1>
+      <DataGrid
+        type="link"
+        href="/artist"
+        data={data.artists.artists
+          .filter((artist) => artist.name)
+          .map((artist) => ({
+            id: artist.id,
+            image: artist.images?.[0]?.url,
+            title: artist.name,
+            description: artist?.type,
           }))}
       />
 
