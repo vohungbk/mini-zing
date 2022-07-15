@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FC, FormEvent, useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 
@@ -9,9 +10,14 @@ import style from './Style.module.scss'
 const Header: FC = () => {
   const [isActive, setIsActive] = useState(false)
   const [inputValue, setInputValue] = useState('')
+  const router = useRouter()
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault()
+    if (inputValue.trim()) {
+      setInputValue('')
+      router.push(`/search?q=${encodeURIComponent(inputValue.trim())}`)
+    }
   }
 
   return (
@@ -21,12 +27,12 @@ const Header: FC = () => {
           <a className={style.link}>
             <Image
               className="w-8 h-8"
-              src="/icon.png"
+              src="/logo.png"
               alt=""
               layout="fill"
               objectFit="cover"
             />
-            <h1 className={style.title}>MiniZing</h1>
+            <h1 className={style.title}>MiniSpotify</h1>
           </a>
         </Link>
         <button

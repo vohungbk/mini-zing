@@ -10,10 +10,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Http token="">
       <Head>
-        <title>Mini Zing Mp3</title>
-        <meta name="description" content="A music player use ZingMp3 API" />
+        <title>Mini Spotify</title>
+        <meta name="description" content="A music player use Spotify API" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="shortcut icon" href="/icon.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
       </Head>
       <Auth>
         <PlayerContextProvider>

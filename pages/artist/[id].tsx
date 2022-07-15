@@ -71,7 +71,7 @@ const Artist = () => {
           <h1 className="mt-5 mb-3 text-2xl">Albums</h1>
           <DataGrid
             type="link"
-            handler={(id: string) => `/album/${id}`}
+            href="/album"
             data={data.albums.items
               .filter((album) => album.name)
               .map((album) => ({
@@ -93,7 +93,7 @@ const Artist = () => {
           <h1 className="mt-5 mb-2 text-2xl">Related Artists</h1>
           <DataGrid
             type="link"
-            handler={(id: string) => `/artist/${id}`}
+            href="/artist"
             data={data.relatedArtists.artists
               .filter((artist) => artist.name)
               .map((artist) => ({
