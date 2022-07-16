@@ -15,11 +15,14 @@ interface Album {
   }
 }
 
-export const getAlbumInfo = async (albumId: string) => {
+export const getAlbumInfo = async (albumId: string, token: string) => {
   const album = axios
     .get<Album>('/getAlbum', {
       params: {
         albumId,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
     })
     .then((res) => res.data)

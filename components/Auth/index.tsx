@@ -1,10 +1,4 @@
-import {
-  createContext,
-  FunctionComponent,
-  ReactNode,
-  useEffect,
-  useState,
-} from 'react'
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
 import axios from 'axios'
 import { useHttpContext } from '@Components/Http'
 
@@ -14,28 +8,16 @@ interface User {
   token_type: string
 }
 
-interface AuthContextType {
-  authenticate: (data: User) => void
-}
-
 interface ProviderProps {
   children: ReactNode
 }
-
-const initAuthContextState: AuthContextType = {
-  authenticate: () => null,
-}
-
-const Context = createContext(initAuthContextState)
 
 export const Provider: FunctionComponent<ProviderProps> = ({ children }) => {
   const { setToken } = useHttpContext()
   const [user, setUser] = useState<User>()
 
   useEffect(() => {
-    if (!sessionStorage.getItem('accessToken')) {
-      getUserAccount()
-    }
+    getUserAccount()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -53,14 +35,12 @@ export const Provider: FunctionComponent<ProviderProps> = ({ children }) => {
       .then((res) => res.data)
     setUser(user)
     setToken(user.access_token)
-    authenticate(user)
   }
 
   useEffect(() => {
     if (user) {
       setTimeout(() => {
         refresh()
-        sessionStorage.removeItem('accessToken')
       }, user?.expires_in * 1000)
     }
   }, [user])
@@ -77,16 +57,12 @@ export const Provider: FunctionComponent<ProviderProps> = ({ children }) => {
         },
       })
       .then((res) => res.data)
-    authenticate(user)
+    sessionStorage.setItem('accessToken', user.access_token)
   }
 
-  const authenticate = (data: User) => {
-    sessionStorage.setItem('accessToken', data.access_token)
+  if (!user) {
+    return null
   }
 
-  const value: AuthContextType = {
-    authenticate,
-  }
-
-  return <Context.Provider value={value}>{children}</Context.Provider>
+  return <React.Fragment>{children}</React.Fragment>
 }

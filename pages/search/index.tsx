@@ -1,5 +1,6 @@
 import DataGrid from '@Components/DataGrid'
 import Error from '@Components/Error'
+import { useHttpContext } from '@Components/Http'
 import Loading from '@Components/Loading'
 import { PlayerContext } from 'context/PlayerContext'
 import { useRouter } from 'next/router'
@@ -12,12 +13,12 @@ import style from './Styled.module.scss'
 
 const Search: FC = () => {
   const { setPlayerId, setIsPlayerIdChanged } = useContext(PlayerContext)
+  const { token } = useHttpContext()
   const router = useRouter()
-
   const { q } = router.query
 
   const { data, error } = useSWR(`search-${q}`, () =>
-    searchByKeywords(q as string)
+    searchByKeywords(q as string, token)
   )
 
   if (error) return <Error />

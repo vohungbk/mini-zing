@@ -16,11 +16,13 @@ import { PlayerContext } from 'context/PlayerContext'
 
 import style from './Style.module.scss'
 import classnames from 'classnames'
+import { useHttpContext } from '@Components/Http'
 
 const Player: FC = () => {
   const { playerId, setIsPlayerIdChanged } = useContext(PlayerContext)
+  const { token } = useHttpContext()
   const { data, error } = useSWR(`track-${playerId}`, () =>
-    getTrackInfo(playerId)
+    getTrackInfo(playerId, token)
   )
 
   const isLoading = !data

@@ -16,13 +16,23 @@ interface Playlist {
   }
 }
 
-export const getCategoryInfo = async (id: string) => {
+export const getCategoryInfo = async (id: string, token: string) => {
   const [category, playlists] = await Promise.all([
     axios
-      .get<Categories>('/getCategory', { params: { id } })
+      .get<Categories>('/getCategory', {
+        params: { id },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => res.data),
     axios
-      .get<Playlist>('/getCategoryPlaylists', { params: { id } })
+      .get<Playlist>('/getCategoryPlaylists', {
+        params: { id },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => res.data),
   ])
   return { category, playlists }

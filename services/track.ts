@@ -17,9 +17,14 @@ type Track = {
   external_urls: { spotify: string }
 }
 
-export const getTrackInfo = async (id: string) => {
+export const getTrackInfo = async (id: string, token: string) => {
   const track = await axios
-    .get<Track>('/getTrack', { params: { trackId: id } })
+    .get<Track>('/getTrack', {
+      params: { trackId: id },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .then((res) => res.data)
   return track
 }

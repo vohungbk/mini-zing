@@ -5,7 +5,7 @@
   position: relative;
   div {
     position: absolute;
-    top: 10px;
+    top: 20vh;
     left: 0;
     width: 100%;
     height: 100%;
@@ -19,6 +19,9 @@
       border: 4px solid #00aefd;
       border-radius: 5rem;
       animation: loading 1s infinite;
+    }
+    @media (min-width: 768px) {
+      top: 30vh;
     }
   }
   .item1 {

@@ -11,7 +11,7 @@ import { SWRConfig } from 'swr'
 
 const HTTP_DEFAULT_CONFIG = {
   revalidateOnFocus: false,
-  shouldRetryOnError: false,
+  shouldRetryOnError: true,
 }
 
 interface HttpContextType {

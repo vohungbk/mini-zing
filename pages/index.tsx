@@ -7,18 +7,16 @@ import Error from '@Components/Error'
 import DataGrid from '@Components/DataGrid'
 import { PlayerContext } from 'context/PlayerContext'
 import Loading from '@Components/Loading'
+import { useHttpContext } from '@Components/Http'
 
 const Home: NextPage = () => {
   const { setPlayerId, setIsPlayerIdChanged } = useContext(PlayerContext)
+  const { token } = useHttpContext()
 
-  const { data, error } = useSWR(
-    () => (sessionStorage.getItem('accessToken') ? 'home' : null),
-    () => getHomeContent(),
-    {
-      revalidateOnFocus: false,
-      revalidateIfStale: false,
-    }
-  )
+  const { data, error } = useSWR('home', () => getHomeContent(token), {
+    revalidateOnFocus: false,
+    revalidateIfStale: false,
+  })
 
   if (error) return <Error />
 

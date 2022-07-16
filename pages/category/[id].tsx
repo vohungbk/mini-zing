@@ -1,5 +1,6 @@
 import DataGrid from '@Components/DataGrid'
 import Error from '@Components/Error'
+import { useHttpContext } from '@Components/Http'
 import Loading from '@Components/Loading'
 import { useRouter } from 'next/router'
 import { getCategoryInfo } from 'services/categories'
@@ -8,11 +9,12 @@ import useSWR from 'swr'
 import style from './Style.module.scss'
 
 const Categories = () => {
+  const { token } = useHttpContext()
   const router = useRouter()
   const { id } = router.query
 
   const { error, data } = useSWR(`category-${id}`, () =>
-    getCategoryInfo(id as string)
+    getCategoryInfo(id as string, token)
   )
 
   if (error) return <Error />

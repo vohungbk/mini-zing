@@ -1,5 +1,6 @@
 import DataGrid from '@Components/DataGrid'
 import Error from '@Components/Error'
+import { useHttpContext } from '@Components/Http'
 import Loading from '@Components/Loading'
 import { PlayerContext } from 'context/PlayerContext'
 import Image from 'next/image'
@@ -13,10 +14,11 @@ import style from './Style.module.scss'
 
 const Artist = () => {
   const { setPlayerId, setIsPlayerIdChanged } = useContext(PlayerContext)
+  const { token } = useHttpContext()
   const router = useRouter()
   const { id } = router.query
   const { error, data } = useSWR(`album-${id}`, () =>
-    getArtistInfo(id as string)
+    getArtistInfo(id as string, token)
   )
   if (error) return <Error />
   if (!data) return <Loading />

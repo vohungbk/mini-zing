@@ -22,11 +22,14 @@ interface Playlist {
   }
 }
 
-export const getPlaylistInfo = async (id: string) => {
+export const getPlaylistInfo = async (id: string, token: string) => {
   const album = axios
     .get<Playlist>('/getPlaylist', {
       params: {
         id,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
     })
     .then((res) => res.data)

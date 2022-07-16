@@ -10,15 +10,17 @@ import useSWR from 'swr'
 import style from './Style.module.scss'
 import { formatDuration } from 'shared/utils'
 import Loading from '@Components/Loading'
+import { useHttpContext } from '@Components/Http'
 
 const Album: FC = () => {
   const { setPlayerId, setIsPlayerIdChanged } = useContext(PlayerContext)
+  const { token } = useHttpContext()
 
   const router = useRouter()
   const { id } = router.query
 
   const { error, data } = useSWR(`album-${id}`, () =>
-    getAlbumInfo(id as string)
+    getAlbumInfo(id as string, token)
   )
 
   if (error) return <Error />

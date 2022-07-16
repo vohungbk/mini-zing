@@ -42,12 +42,15 @@ interface Album {
   }[]
 }
 
-export const getArtistInfo = async (id: string) => {
+export const getArtistInfo = async (id: string, token: string) => {
   const [artist, topTrack, albums, relatedArtists] = await Promise.all([
     axios
       .get<Artist>('/getArtist', {
         params: {
           id,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => res.data),
@@ -56,6 +59,9 @@ export const getArtistInfo = async (id: string) => {
         params: {
           id,
         },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => res.data),
     axios
@@ -63,12 +69,18 @@ export const getArtistInfo = async (id: string) => {
         params: {
           id,
         },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => res.data),
     axios
       .get<RelatedArtist>('/getRelatedArtists', {
         params: {
           id,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => res.data),

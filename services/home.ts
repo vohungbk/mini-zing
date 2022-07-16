@@ -41,7 +41,7 @@ interface Artists {
   }[]
 }
 
-export const getHomeContent = async () => {
+export const getHomeContent = async (token: string) => {
   try {
     const [
       recommendations,
@@ -56,12 +56,18 @@ export const getHomeContent = async () => {
           params: {
             seed_artists: SEED_ARTISTS,
           },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         })
         .then((res) => res.data.tracks),
       axios
         .get<NewRelease>('/getNewReleases', {
           params: {
             country: 'VN',
+          },
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
         })
         .then((res) => res.data),
@@ -70,6 +76,9 @@ export const getHomeContent = async () => {
           axios
             .get('/getTopPlaylists', {
               params: { playlist, fields: 'id,name,images,uri' },
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             })
             .then((res) => res.data)
         )
@@ -79,13 +88,26 @@ export const getHomeContent = async () => {
           params: {
             country: 'VN',
           },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         })
         .then((res) => res.data),
       axios
-        .get<Categories>('/getCategories', { params: { country: 'US' } })
+        .get<Categories>('/getCategories', {
+          params: { country: 'US' },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then((res) => res.data),
       axios
-        .get<Artists>('/getArtists', { params: { ids: SUGGESTED_ARTISTS } })
+        .get<Artists>('/getArtists', {
+          params: { ids: SUGGESTED_ARTISTS },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then((res) => res.data),
     ])
 

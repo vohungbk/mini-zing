@@ -35,12 +35,15 @@ interface Data {
   }
 }
 
-export const searchByKeywords = async (q: string) => {
+export const searchByKeywords = async (q: string, token: string) => {
   const result = await axios
     .get<Data>('/search', {
       params: {
         q,
         types: ['artist', 'track', 'album', 'playlist'],
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
     })
     .then((res) => res.data)
